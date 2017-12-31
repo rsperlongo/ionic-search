@@ -9,7 +9,10 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   countries: string[];
-  errorMessage: string
+  errorMessage: string;
+  descending: boolean = false;
+  order: number;
+  column: string = 'name';
 
   constructor(public navCtrl: NavController, public rest: RestApiProvider) {}
 
@@ -22,6 +25,11 @@ export class HomePage {
 
   ionViewDidLoad(){
     this.getCountries()
+  }
+
+  sort(){
+    this.descending = !this.descending;
+    this.order = !this.descending ? 1 : -1;
   }
 
 }
